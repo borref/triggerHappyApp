@@ -1,0 +1,2 @@
+module TriggerHappyHelper
+end
