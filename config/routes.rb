@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   root 'trigger_happy#index'
 
-  post '/top_five', to: 'trigger_happy#fetch_top_five'
+  post '/org',                   to: 'trigger_happy#create_org_tree'
+  post '/contributions_history', to: 'trigger_happy#get_contributions_history'
 end

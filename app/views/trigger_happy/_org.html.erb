@@ -1,0 +1,24 @@
+<% number_repos = organization.repositories.length %>
+
+<div class="ui container">
+  <h2 class="ui header">
+    <%= image_tag organization.avatar_url, alt: organization.login_name, class: 'ui image' %>
+    <div class="content">
+      <%= organization.login_name.capitalize %>
+      <div class="sub header">
+        This organization has <%= number_repos %> repositor<%= number_repos == 1 ? 'y' : 'ies' %>.
+      </div>
+    </div>    
+  </h2>
+
+  <% if number_repos > 0 %>
+    <%= form_tag(contributions_history_path, method: "post", remote: true) do %>
+      <%= label_tag(:days, "Get contributions from last") %>
+      <%= number_field_tag(:days, '', required: true, autofocus: true) %>
+      <span>days</span>
+
+      <%= submit_tag("Get info", class: 'ui orange button', 
+                      data: { disable_with: "Getting results from repos history..." }) %>
+    <% end %>
+  <% end %>
+</div>

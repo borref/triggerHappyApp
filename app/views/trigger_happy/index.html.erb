@@ -1,11 +1,32 @@
-<h1>Trigger Happy Hat</h1>
-<%= form_tag(top_five_path, method: "post") do %>
-  <%= label_tag(:username, "Company's name:") %>
-  <%= text_field_tag(:username) %>
-  <br>
-  <%= label_tag(:days, "Know contributions from last:") %>
-  <%= number_field_tag(:days) %>
-  <span>&nbsp;days</span>
-  <br>
-  <%= submit_tag("Search") %>
-<% end %>
+<header>
+  <div class="ui container">
+    <h1 class="ui header">Trigger Happy Hat</h1>
+  </div>  
+</header>
+
+<section>
+  <div class="ui container">
+    <%= form_tag(org_path, method: "post", remote: true, class: 'org-form') do %>
+      <%= label_tag(:name, "Organization's Github name:") %>
+      <%= text_field_tag(:name, '', required: true, autofocus: true, autocomplete: 'off') %>
+      <%= submit_tag("Search", class: 'ui orange button', data: { disable_with: "Fetching organization info..." }) %>
+    <% end %>
+  </div>    
+</section>
+
+<section id="org"></section>
+
+<section id="contributions-results"></section>
+
+<footer>
+  <div class="ui container">
+    <p>
+      © 2016 Andrés Castañeda. All Rights Reserved.
+    </p>
+    <p>
+      Made with&nbsp;
+      <span><i class="heart red icon"></i></span>
+      by <a href="https://github.com/borref">@borref</a>
+    </p>
+  </div>
+</footer>

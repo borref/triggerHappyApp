@@ -1,0 +1,6 @@
+$("#org").html("<%= escape_javascript(render partial: 'trigger_happy/org', locals: { organization: @organization } ) %>");
+
+$(".org-form").submit(function (e) {
+  $("#org").html('<div class="ui container"><h2 class="ui header">Fetching organization basic information...</h2><div>');
+  $("#contributions-results").html('');
+});

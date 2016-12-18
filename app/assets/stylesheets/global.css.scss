@@ -1,0 +1,173 @@
+/*
+ * Andres Castañeda Borre
+ * Github: @borref
+ * Copyright 2016 - All Rights Reserved
+ */
+
+@import "semantic-ui";
+@import "colors";
+
+
+// ++++++++++++++++++++++++++++
+//    Table of contents
+// ++++++++++++++++++++++++++++
+//
+//    1. Base
+//    2. Header
+//    3. Section
+//      3.1 Org
+//      3.2 Results
+//    4. Form
+//    5. Footer
+//
+// ++++++++++++++++++++++++++++
+
+
+
+/*-----------------------------
+     1. Base
+-----------------------------*/
+
+body { background-color: $purple; }
+
+
+/*-----------------------------
+     2. Header
+-----------------------------*/
+
+header { 
+  background-color: $purple;
+  h1.ui.header { color: white; padding: 2rem 0; }
+}
+
+
+/*-----------------------------
+     3. Section
+-----------------------------*/
+
+section { 
+  background-color: $cream; padding: 2rem 0; 
+
+  .ui.header { color: $brown; }
+}
+
+
+/*-----------------------------
+       3.1. Results
+-----------------------------*/
+
+#podium {
+  height: 600px;
+  list-style: none;
+  margin: 0;
+  padding: 10rem 0 0;
+  position: relative;
+
+  li {
+    position: absolute;
+    text-align: center;
+
+    img { border-radius: 50%; }
+  }
+}
+
+.top-0 {
+  left: 35%;
+  padding: 0 1rem;
+  width: 30%;
+
+  &:before {
+    background: url(hat.png) no-repeat;
+    background-size: 100%;
+    content: "";
+    display: inline-block;
+    height: 70%;
+    left: -13%;
+    position: absolute;
+    top: -34%;
+    width: 125%;
+  }
+
+  img { width: 80%; }
+}
+
+.second-podium {
+  width: 20%;
+  img { width: 80%; }
+}
+
+.third-podium {
+  width: 15%;
+  img { width: 85%; }
+}
+
+.top-1 {
+  @extend .second-podium;
+  
+  left: 15%;
+  padding: 4rem 1rem 0;
+} 
+
+.top-2 {
+  @extend .second-podium;
+  
+  left: 65%;
+  padding: 6rem 1rem 0;
+}
+
+.top-3 {
+  @extend .third-podium;
+  
+  left: 0;
+  padding: 10rem .5rem 0;
+} 
+
+.top-4 {
+  @extend .third-podium;
+  
+  left: 85%;
+  padding: 12rem .5rem 0;
+}
+
+/*-----------------------------
+     4. Form
+-----------------------------*/
+
+form {
+  font-size: 1.5em;
+
+  label, span { color: $brown; font-weight: bold; }
+
+  span { margin-right: .5rem; }
+
+  input {
+    background-color: $cream;
+    border: none;
+    border-bottom: solid 1px;
+    margin: 0 .5rem;
+
+    &:focus {
+      border-bottom: solid 2px $brown;
+      outline: none;
+    }
+
+    &#days {
+      text-align: center;
+      width: 3rem;    
+    }
+  }
+}
+
+
+/*-----------------------------
+     5. Footer
+-----------------------------*/
+
+footer { 
+  background-color: $purple;
+  margin: 3rem 0 4rem;
+  text-align: center;
+
+  p { color: white; font-weight: bold; }
+}
+

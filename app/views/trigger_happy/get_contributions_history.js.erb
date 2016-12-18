@@ -1,0 +1,28 @@
+$("#contributions-results").html("<%= escape_javascript(render partial: 'trigger_happy/results', locals: { top_five: @top_five } ) %>");
+
+<% if @top_five.length > 0 %>
+
+// Select chart canvas DOM node
+var chartCanvas = $("#contributors-chart");
+
+// Instatiate a line chart
+var contributorsChart = new Chart(chartCanvas, {
+  type: 'bar',
+  data: {
+    labels: <%= @top_five.map { |dev| dev.username }.to_json.html_safe %>,
+    datasets: [ 
+      {
+        label: "Average contributions per day",
+        backgroundColor: '#FCC400',
+        data: <%= @top_five.map { |dev| dev.avg_contributions }.to_json.html_safe  %>
+      } 
+    ]
+  }
+});
+
+<% end %>
+
+$("#org form").submit(function (e) {
+  $("#contributions-results").html('<div class="ui container"><h2 class="ui header">Fetching commits contributions...</h2><div>');
+});
+
