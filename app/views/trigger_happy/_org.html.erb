@@ -14,7 +14,7 @@
   <% if number_repos > 0 %>
     <%= form_tag(contributions_history_path, method: "post", remote: true) do %>
       <%= label_tag(:days, "Get contributions from last") %>
-      <%= number_field_tag(:days, '', required: true, autofocus: true) %>
+      <%= number_field_tag(:days, '', required: true, min: '1', autofocus: true) %>
       <span>days</span>
 
       <%= submit_tag("Get info", class: 'ui orange button', 
