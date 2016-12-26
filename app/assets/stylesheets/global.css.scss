@@ -6,6 +6,7 @@
 
 @import "semantic-ui";
 @import "colors";
+@import "mixins";
 
 
 // ++++++++++++++++++++++++++++
@@ -19,6 +20,7 @@
 //      3.2 Results
 //    4. Form
 //    5. Footer
+//    6. Responsiveness
 //
 // ++++++++++++++++++++++++++++
 
@@ -57,7 +59,7 @@ section {
 -----------------------------*/
 
 #podium {
-  height: 600px;
+  min-height: 600px;
   list-style: none;
   margin: 0;
   padding: 8rem 0 0;
@@ -173,3 +175,33 @@ footer {
   p { color: white; font-weight: bold; }
 }
 
+
+/*-----------------------------
+     6. Responsiveness
+-----------------------------*/
+
+@include respond-to(x-small) {
+  h2.ui.header .ui.image { width: 2em; }
+
+  .contributions-form .ui.orange.button { margin-top: .625em; }
+
+  #podium {
+    padding-top: 10rem;
+
+    li { 
+      display: block; 
+      margin-bottom: 2rem;
+      padding-top: 0;
+      position: initial;
+      width: 100%;
+
+      img { width: 80%; }
+    }
+  }
+
+  .top-0:before { top: 0; }
+}
+
+@include respond-to(small) {
+  .org-form .ui.orange.button { display: block; margin-top: 1em; }
+}

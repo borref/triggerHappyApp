@@ -12,8 +12,6 @@ class TriggerHappyController < ApplicationController
       end
     rescue Exception => e
       @error = e
-      puts e.message
-      puts e.backtrace
       respond_to do |format|
         format.js {render 'trigger_happy/create_org_tree_error', layout: false}
       end
@@ -28,8 +26,6 @@ class TriggerHappyController < ApplicationController
       end
     rescue Exception => e
       @error = e
-      puts e.message
-      puts e.backtrace
       respond_to do |format|
         format.js {render 'trigger_happy/contributions_error', layout: false}
       end

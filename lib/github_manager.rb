@@ -27,7 +27,6 @@ module GithubManager
       @collaborators.each { |collaborator| collaborator.contributions_number = 0 }
       @repositories.each { |repo| repo.fetch_commits_from days_ago }
 
-      # @collaborators.max_by(5, &:last).to_h
       top_five = @collaborators.sort_by { |col| col.contributions_number }.reverse![0..4].select { |col| col.contributions_number > 0 }
       top_five.each { |col| col.avg_contributions = '%.2f' % (col.contributions_number / days_ago.to_f) }
     end
