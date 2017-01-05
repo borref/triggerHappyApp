@@ -18,12 +18,12 @@ module GithubManager
       @repositories = fetch_repos
     end
 
-    def top_five(days_ago)
+    def top_five_collaborators(days_ago)
       @collaborators.each { |collaborator| collaborator.contributions_number = 0 }
       @repositories.each { |repo| repo.fetch_commits_from days_ago }
 
-      top_five = @collaborators.sort_by { |col| col.contributions_number }.reverse![0..4].select { |col| col.contributions_number > 0 }
-      top_five.each { |col| col.avg_contributions = '%.2f' % (col.contributions_number / days_ago.to_f) }
+      top_five_collaborators = @collaborators.sort_by { |col| col.contributions_number }.reverse![0..4].select { |col| col.contributions_number > 0 }
+      top_five_collaborators.each { |col| col.avg_contributions = '%.2f' % (col.contributions_number / days_ago.to_f) }
     end
 
     def fetch_repos
@@ -151,7 +151,7 @@ module GithubManager
   end
 
   def get_contributions_history(days_ago)
-    @@current_organization.top_five days_ago
+    @@current_organization.top_five_collaborators days_ago
   end
 
   module_function :create_org, :current_organization, :get_contributions_history
