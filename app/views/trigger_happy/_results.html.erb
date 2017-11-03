@@ -1,11 +1,11 @@
 <div class="ui container">
   <h2 class="ui header">Contributions History</h2>
-  <% if top_five.length > 0 %>
+  <% if top_five_collaborators_collaborators.length > 0 %>
     <article>
       <h3 class="ui header">Top Contributors</h3>
       <p>And the <i>Trigger Happy Hat</i> goes to...</p>
       <ul id="podium">
-        <% top_five.each_with_index do |contributor, index| %>
+        <% top_five_collaborators_collaborators.each_with_index do |contributor, index| %>
         <li class="top-<%= index %>">
           <%= image_tag contributor.avatar_url, alt: contributor.username %>
           <h3><%= "#{index+1}. #{contributor.username}" %></h3>

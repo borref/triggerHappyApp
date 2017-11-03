@@ -20,7 +20,7 @@ class TriggerHappyController < ApplicationController
 
   def get_contributions_history
     begin
-      @top_five = GithubManager.get_contributions_history(params[:days])
+      @top_five_collaborators_collaborators = GithubManager.get_contributions_history(params[:days])
       respond_to do |format|
         format.js {render layout: false}
       end

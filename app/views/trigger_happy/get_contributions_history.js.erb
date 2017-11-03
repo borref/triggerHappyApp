@@ -1,6 +1,6 @@
-$("#contributions-results").html("<%= escape_javascript(render partial: 'trigger_happy/results', locals: { top_five: @top_five } ) %>");
+$("#contributions-results").html("<%= escape_javascript(render partial: 'trigger_happy/results', locals: { top_five_collaborators_collaborators: @top_five_collaborators_collaborators } ) %>");
 
-<% if @top_five.length > 0 %>
+<% if @top_five_collaborators_collaborators.length > 0 %>
 
 // Select chart canvas DOM node
 var chartCanvas = $("#contributors-chart");
@@ -9,12 +9,12 @@ var chartCanvas = $("#contributors-chart");
 var contributorsChart = new Chart(chartCanvas, {
   type: 'bar',
   data: {
-    labels: <%= @top_five.map { |dev| dev.username }.to_json.html_safe %>,
+    labels: <%= @top_five_collaborators_collaborators.map { |dev| dev.username }.to_json.html_safe %>,
     datasets: [ 
       {
         label: "Average contributions per day",
         backgroundColor: '#FCC400',
-        data: <%= @top_five.map { |dev| dev.avg_contributions }.to_json.html_safe  %>
+        data: <%= @top_five_collaborators_collaborators.map { |dev| dev.avg_contributions }.to_json.html_safe  %>
       } 
     ]
   }
